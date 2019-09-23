@@ -1,3 +1,8 @@
 app-post-create {
   margin: 1rem auto;
 }
+
+main {
+  width: 80%;
+  margin: 1rem auto 0 auto;
+}
