@@ -1,9 +1,12 @@
 <mat-card>
   <form #postForm>
     <mat-form-field>
-      <textarea matInput rows="4" [(ngModel)]="enteredPost" placeholder="Write a post.." name="postbox"
-        #postbox></textarea>
+      <input matInput [(ngModel)]="enteredTitle" placeholder="Write a title" name="postbox" #posttitle>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput rows="4" [(ngModel)]="enteredContent" placeholder="Write a post.." name="postbox"
+        #postcontent></textarea>
     </mat-form-field>
   </form>
-  <button mat-raised-button color="accent" (click)="onAddPost(postbox.value)">Post</button>
+  <button mat-raised-button color="accent" (click)="onAddPost()">Post</button>
 </mat-card>
