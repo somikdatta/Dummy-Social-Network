@@ -15,6 +15,7 @@ import {
   MatButtonModule,
   MatCardModule
 } from "@angular/material";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {
     MatExpansionModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
