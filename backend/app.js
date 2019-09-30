@@ -21,10 +21,11 @@ app.post("/api/posts", (req, res, next) => {
     message: 'Post added successfully'
   });
 });
+
 app.get('/api/posts', (req, res, next) => {
   const posts = [
-    { id: 'sfsfsqfq3223', title: 'First server side post', content: 'This is coming from the server' },
-    { id: 'sdjfgsfjwdgh237', title: 'Second server side post', content: 'This is coming from the server as well' }
+    { id: '12ab', title: 'First server side post', content: 'This is coming from the server' },
+    { id: '123abc', title: 'Second server side post', content: 'This is coming from the server as well' }
   ];
   return res.status(200).json({
     message: 'Posts fetched successfully!',
