@@ -11,15 +11,18 @@ import { PostsService } from "../posts.service";
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription;
+  isLoading = false;
 
   constructor(private postsService: PostsService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.postsService.getPosts();
     this.postsSub = this.postsService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
         this.posts = posts;
+        this.isLoading = false;
       });
   }
 

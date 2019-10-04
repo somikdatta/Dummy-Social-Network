@@ -1,3 +1,7 @@
 .infoText {
   text-align: center;
 }
+
+mat-spinner {
+  margin: auto;
+}

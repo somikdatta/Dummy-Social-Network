@@ -13,7 +13,8 @@ import {
   MatExpansionModule,
   MatInputModule,
   MatButtonModule,
-  MatCardModule
+  MatCardModule,
+  MatProgressSpinnerModule
 } from "@angular/material";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
@@ -34,6 +35,7 @@ import { AppRoutingModule } from "./app-routing.module";
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     AppRoutingModule
   ],
