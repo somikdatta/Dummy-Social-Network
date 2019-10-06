@@ -6,7 +6,7 @@ const postsRoutes = require('./routes/posts');
 
 const app = express();
 
-mongoose.connect("mongodb+srv://somikdatta:8jJuDbh6Z08s5TrZ@cluster0-owthk.mongodb.net/udemy-mean?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://somikdatta:8jJuDbh6Z08s5TrZ@cluster0-owthk.mongodb.net/udemy-mean?retryWrites=true&w=majority", { useNewUrlParser: true, reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
   }).catch(() => {
