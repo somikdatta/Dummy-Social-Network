@@ -35,18 +35,18 @@ router.post("",
     const post = new Post({
       title: req.body.title,
       content: req.body.content,
-      imagePath: url + "/images/" + req.file.filename
+      imagePath: url + "/images/" + req.file.filename,
+      creator: req.userData.userId
     });
     post.save().then(createdPost => {
       res.status(201).json({
         message: 'Post added successfully',
         post: {
-          //equivalent
-          // ...createdPost,
           id: createdPost._id,
           title: createdPost.title,
           content: createdPost.content,
-          imagePath: createdPost.imagePath
+          imagePath: createdPost.imagePath,
+          creator: createdPost.creator,
         }
       });
     });
@@ -62,11 +62,16 @@ router.patch("/:id", checkAuth, multer({ storage: storage }).single("image"), (r
     _id: req.body.id,
     title: req.body.title,
     content: req.body.content,
-    imagePath: imagePath
+    imagePath: imagePath,
+    creator: req.userData.userId
   });
-  Post.updateOne({ _id: req.params.id }, post).then(
+  Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post).then(
     (result) => {
-      res.status(200).json({ message: "Post Updated" });
+      if (result.nModified > 0) {
+        res.status(200).json({ message: "Post Updated" });
+      } else {
+        res.status(401).json({ message: "Unauthorized user" });
+      }
     }
   )
 })
@@ -107,9 +112,13 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-  Post.deleteOne({ _id: req.params.id }).then(
+  Post.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(
     result => {
-      res.status(200).json({ message: "Post deleted!" });
+      if (result.n > 0) {
+        res.status(200).json({ message: "Post Deleted" });
+      } else {
+        res.status(401).json({ message: "Unauthorized user" });
+      }
     }
   )
 });
