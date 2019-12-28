@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const postsRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
-
+const cors = require('cors')
 const app = express();
 
 mongoose.connect("mongodb+srv://somikdatta:8jJuDbh6Z08s5TrZ@cluster0-owthk.mongodb.net/udemy-mean?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
