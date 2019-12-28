@@ -37,11 +37,14 @@ export class AuthService {
       email: email,
       password: password
     };
-    this.http
-      .post("http://localhost:3000/api/user/signup", authData)
-      .subscribe(res => {
-        this.loginUser(email, password);
-      });
+    this.http.post("http://localhost:3000/api/user/signup", authData).subscribe(
+      () => {
+        this.router.navigate(["/"]);
+      },
+      err => {
+        this.authStatusListener.next(false);
+      }
+    );
   }
 
   loginUser(email: string, password: string) {
@@ -54,20 +57,25 @@ export class AuthService {
         "http://localhost:3000/api/user/login",
         authData
       )
-      .subscribe(res => {
-        this.token = res.token;
-        if (this.token) {
-          const expiresIn = res.expiresIn;
-          this.setAuthTimer(expiresIn);
-          this.isAuthenticated = true;
-          this.userId = res.userId;
-          this.authStatusListener.next(true);
-          const now = new Date();
-          const expirationDate = new Date(now.getTime() + expiresIn * 1000);
-          this.saveAuthData(this.token, expirationDate, this.userId);
-          this.router.navigate(["/"]);
+      .subscribe(
+        res => {
+          this.token = res.token;
+          if (this.token) {
+            const expiresIn = res.expiresIn;
+            this.setAuthTimer(expiresIn);
+            this.isAuthenticated = true;
+            this.userId = res.userId;
+            this.authStatusListener.next(true);
+            const now = new Date();
+            const expirationDate = new Date(now.getTime() + expiresIn * 1000);
+            this.saveAuthData(this.token, expirationDate, this.userId);
+            this.router.navigate(["/"]);
+          }
+        },
+        err => {
+          this.authStatusListener.next(false);
         }
-      });
+      );
   }
 
   autoAuthUser() {
