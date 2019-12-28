@@ -8,6 +8,7 @@ import { AuthGuard } from "./auth/auth.guard";
 const routes: Routes = [
   { path: "", component: PostListComponent },
   { path: "create", component: PostCreateComponent, canActivate: [AuthGuard] },
+  { path: "edit", redirectTo: "", pathMatch: "full" },
   {
     path: "edit/:postId",
     component: PostCreateComponent,
