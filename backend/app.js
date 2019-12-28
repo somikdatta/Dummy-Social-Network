@@ -8,7 +8,7 @@ const userRoutes = require('./routes/user');
 const cors = require('cors')
 const app = express();
 
-mongoose.connect("mongodb+srv://somikdatta:8jJuDbh6Z08s5TrZ@cluster0-owthk.mongodb.net/udemy-mean?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://somikdatta:" + process.env.MONGO_ATLAS_PASS + "@cluster0-owthk.mongodb.net/udemy-mean?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
   }).catch(() => {
