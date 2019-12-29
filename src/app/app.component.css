@@ -6,3 +6,9 @@ main {
   width: 80%;
   margin: 1rem auto 0 auto;
 }
+
+@media screen and (max-width:480px) {
+  main {
+    width: 99%;
+  }
+}
