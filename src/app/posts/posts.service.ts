@@ -72,7 +72,10 @@ export class PostsService {
     postData.append("content", content);
     postData.append("image", image, title);
     this.http
-      .post<{ message: string; post: Post }>(BACKEND_URL, postData)
+      .post<{
+        message: string;
+        post: Post;
+      }>(BACKEND_URL, postData)
       .subscribe(res => {
         this.router.navigate(["/"]);
       });
