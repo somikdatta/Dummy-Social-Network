@@ -14,15 +14,25 @@
 
 <body>
   <app-root></app-root>
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="/__/firebase/7.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-       https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="/__/firebase/7.6.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
 
-  <!-- Initialize Firebase -->
-  <script src="/__/firebase/init.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyDrTUJKLMQc2SlIhfLUOWORG0FLx5itomM",
+      authDomain: "somiksocial.firebaseapp.com",
+      databaseURL: "https://somiksocial.firebaseio.com",
+      projectId: "somiksocial",
+      storageBucket: "somiksocial.appspot.com",
+      messagingSenderId: "752900080321",
+      appId: "1:752900080321:web:be52a9155a0bfbe2860a40",
+      measurementId: "G-GKY3MVGCC9"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
 </body>
 
 </html>
